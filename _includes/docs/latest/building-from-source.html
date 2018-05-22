@@ -1,0 +1,27 @@
+<h2 id="building-from-source">Building from Source</h2>
+
+<p>Azkaban builds use <a href="https://gradle.org/" target="_blank">Gradle</a> (downloads automatically when run using <code>gradlew</code> which is the Gradle wrapper)
+  and requires Java 8 or higher.</p>
+
+<p>The following commands run on *nix platforms like Linux, OS X.</p>
+<pre>
+  # Build Azkaban
+  ./gradlew build
+
+  # Clean the build
+  ./gradlew clean
+
+  # Build and install distributions
+  ./gradlew installDist
+
+  # Run tests
+  ./gradlew test
+
+  # Build without running tests
+  ./gradlew build -x test
+</pre>
+
+<p>These are all standard Gradle commands. Please look at <a href="https://gradle.org/documentation/" target="_blank">Gradle documentation</a> for more info.</p>
+
+Gradle creates <code>.tar.gz</code> files inside project directories. eg. <code>./azkaban-solo-server/build/distributions/azkaban-solo-server-0.1.0-SNAPSHOT.tar.gz</code>.
+Untar using <code>tar -xvzf path/to/azkaban-*.tar.gz</code>.

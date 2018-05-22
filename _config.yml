@@ -1,0 +1,13 @@
+name: Azkaban
+safe: true
+lsi: false
+highlighter: rouge
+port: 8080
+
+tagline: "Open-source Workflow Manager"
+image: "img/app.png"
+repo: "azkaban/azkaban"
+
+plugins_repo: "azkaban/azkaban-plugins"
+docs: "/"
+home: "http://azkaban.github.io"

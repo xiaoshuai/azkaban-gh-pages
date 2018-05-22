@@ -1,0 +1,38 @@
+<h2 id="schedule-flow">Schedule Flow</h2>
+
+<p>From the same panel that is used to <a href="#executing-flows">execute flows</a>, flows can be scheduled by clicking on the *Schedule* button.</p>
+
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <a href="./images/flexible-scheduling.png" data-lightbox="schedule-flow" title="Schedule flow">
+      <img class="img-thumbnail" title="Schedule Flow" src="./images/flexible-scheduling.png" ALT="Schedule Flow" width="450" />
+    </a>
+  </div>
+</div>
+
+<p>Any flow options set will be preserved for the scheduled flow. For instance, if jobs are disabled, then the scheduled flow's jobs will also be disabled.<p>
+
+<p>With new flexible scheduling feature in Azkaban 3.3, User are able to define a cron job following <a href="http://www.quartz-scheduler.org/documentation/quartz-2.x/tutorials/crontrigger.html">Quartz syntax</a>. One important change different from Quartz or cron is that Azkaban functions at the minute granularity at most. Therefore, second field in UI is labeled as a static "0". The <a href="https://github.com/azkaban/azkaban/wiki/New-Azkaban-Schedule-Introduction">Flexible Schedule Wiki</a> explains the details how to use. </p> 
+
+<p>After scheduling, it should appear on the schedule page, where you can remove the scheduled job or set the SLA options.</p>
+
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <a href="./images/schedulepage.png" data-lightbox="schedule-flow" title="Schedule page">
+      <img class="img-thumbnail" title="Schedule Page" src="./images/schedulepage.png" ALT="Schedule Page" width="450" />
+    </a>
+  </div>
+</div>
+
+<h3>SLA</h3>
+
+<p>To add SLA notification or pre-emption, click on the SLA button. From here you can set the SLA alert emails. Rules can be added and applied to individual jobs or the flow itself. If duration threshold is exceeded, then an alert email can be set or the flow or job can be auto killed. If a job is killed due to missing the SLA, it will be retried based on the retry configuration of that job.
+</p>
+
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <a href="./images/slapanel.png" data-lightbox="schedule-flow" title="SLA panel">
+      <img class="img-thumbnail" title="SLA Page" src="./images/slapanel.png" ALT="SLA Page" width="450" />
+    </a>
+  </div>
+</div>
