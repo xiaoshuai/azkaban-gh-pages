@@ -1,27 +1,27 @@
 <div class="page-header">
-  <h1 id="getting-started">Getting Started</h1>
+  <h1 id="getting-started">使用入门</h1>
 </div>
 
-<p class="lead">In version 3.0 we provide three modes: the stand alone "solo-server" mode, the heavier weight two server mode and distributed multiple-executor mode. The following describes the differences between the two modes.</p>
+<p class="lead">在3.0版本中，我们提供了三种模式：独立的“独立服务器”模式，较重的两服务器模式和分布式多执行器模式。 以下描述这几种模式之间的区别。</p>
 
-<p>In <strong>solo server mode</strong>, the DB is embedded H2 and both web server and executor server run in the same process. This should be useful if one just wants to try things out. It can also be used on small scale use cases.</p>
+<p>在<strong>独立服务器模式</strong>下，数据库是嵌入式的H2数据库，并且Web服务器和执行器服务器都在相同的进程中运行。如果只想尝试一下，这应该很有用。它也可以用于小规模场景。</p>
 <ol>
-	<li><a href="#solo-setup">Download and Install Solo Server Package</a></li>
-	<li><a href="#plugin-setup">Install Azkaban Plugins</a></li>
+	<li><a href="#solo-setup">下载并安装独立服务器包</a></li>
+	<li><a href="#plugin-setup">安装Azkaban插件</a></li>
 </ol>
-<p>The <strong>two server mode</strong> is for more serious production environment. Its DB should be backed by MySQL instances with master-slave set up. The web server and executor server should run in different processes so that upgrading and maintenance shouldn't affect users.</p>
+<p>对于<strong>两服务器模式</strong>适用于更严肃的生产环境。其数据库应该由主从设置的MySQL实例提供支持。Web服务器和执行器服务器应运行在不同的进程中，以便升级和维护不应影响用户。</p>
 <ol>
-	<li><a href="#database-setup">Set up the database</a></li>
-	<li><a href="#webserver-setup">Download and install the Web Server</a></li>
-	<li><a href="#executor-setup">Download and install the Executor Server</a></li>
-	<li><a href="#plugin-setup">Install Azkaban Plugins</a></li>
+	<li><a href="#database-setup">设置数据库</a></li>
+	<li><a href="#webserver-setup">下载并安装Web服务器</a></li>
+	<li><a href="#executor-setup">下载并安装Executor Server</a></li>
+	<li><a href="#plugin-setup">安装Azkaban插件</a></li>
 </ol>
-<p>The <strong>multiple executor mode</strong> is for most serious production environment. Its DB should be backed by MySQL instances with master-slave set up. The web server and executor servers should ideally run in different hosts so that upgrading and maintenance shouldn't affect users. This multiple host setup brings in robust and scalable aspect to Azkaban.</p>
+<p>对于<strong>多执行器模式</strong>适用于更严肃的生产环境。其数据库应该由主从设置的MySQL实例提供支持。Web服务器和执行器服务器应运行在不同的进程中，以便升级和维护不应影响用户。这种多主机设置为Azkaban带来了强大且可扩展的方面。</p>
 <ol>
-	<li><a href="#database-setup">Set up the database</a></li>
-	<li><a href="#webserver-setup">Download and install the Web Server</a></li>
-	<li><a href="#multipleExecutors-config">Configure database to use multiple executors</a></li>
-	<li><a href="#executor-setup">Download and install the Executor Server for each executor configured in database</a></li>
-	<li><a href="#plugin-setup">Install Azkaban Plugins</a></li>
+	<li><a href="#database-setup">设置数据库</a></li>
+	<li><a href="#webserver-setup">下载并安装Web服务器</a></li>
+	<li><a href="#multipleExecutors-config">配置数据库以使用多个执行程序</a></li>
+	<li><a href="#executor-setup">为数据库中配置的每个执行程序下载并安装Executor Server</a></li>
+	<li><a href="#plugin-setup">安装Azkaban插件</a></li>
 </ol>
-<p>Below are instructions on how to set Azkaban up.</p>
+<p>以下是关于如何设置Azkaban启动的说明。</p>
