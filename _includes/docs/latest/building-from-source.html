@@ -1,9 +1,8 @@
-<h2 id="building-from-source">Building from Source</h2>
+<h2 id="building-from-source">从源代码构建</h2>
 
-<p>Azkaban builds use <a href="https://gradle.org/" target="_blank">Gradle</a> (downloads automatically when run using <code>gradlew</code> which is the Gradle wrapper)
-  and requires Java 8 or higher.</p>
+<p>Azkaban构建使用<a href="https://gradle.org/" target="_blank">Gradle</a>（使用<code>gradlew</code>它是Gradle包装器）运行时自动下载），并且需要Java 8或更高版本。</p>
 
-<p>The following commands run on *nix platforms like Linux, OS X.</p>
+<p>以下命令在Linux，OS X等*nix平台上运行。</p>
 <pre>
   # Build Azkaban
   ./gradlew build
@@ -21,7 +20,6 @@
   ./gradlew build -x test
 </pre>
 
-<p>These are all standard Gradle commands. Please look at <a href="https://gradle.org/documentation/" target="_blank">Gradle documentation</a> for more info.</p>
+<p>这些都是标准的Gradle命令。请查看<a href="https://gradle.org/documentation/" target="_blank">Gradle文档</a>以获取更多信息。</p>
 
-Gradle creates <code>.tar.gz</code> files inside project directories. eg. <code>./azkaban-solo-server/build/distributions/azkaban-solo-server-0.1.0-SNAPSHOT.tar.gz</code>.
-Untar using <code>tar -xvzf path/to/azkaban-*.tar.gz</code>.
+Gradle在项目目录内创建<code>.tar.gz</code>文件。例如<code>./azkaban-solo-server/build/distributions/azkaban-solo-server-0.1.0-SNAPSHOT.tar.gz</code>。使用<code>tar -xvzf path/to/azkaban-*.tar.gz</code>解压缩。
