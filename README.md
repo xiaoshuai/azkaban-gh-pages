@@ -1,11 +1,11 @@
-# Azkaban GitHub pages
+# Azkaban中文Github页面
 
-View the page at [Azkaban Github Page](http://azkaban.github.io/azkaban).
+访问[Azkaban中文Github页面](http://azkaban.github.io/azkaban).
 
 ## Set up
 One can follow the guide [here](https://help.github.com/articles/using-jekyll-with-pages/) or follow the steps below.
 
-### Install bundler
+### 安装bundler工具
 Run this from shell
 ```
 gem install bundler
