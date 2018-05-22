@@ -1,57 +1,57 @@
 <div class="page-header">
-  <h1 id="overview">Overview</h1>
+  <h1 id="overview">概述</h1>
 </div>
 
-<p>Azkaban was implemented at LinkedIn to solve the problem of Hadoop job dependencies. We had jobs that needed to run in order, from ETL jobs to data analytics products.</p>
+<p>Azkaban由LinkedIn开发实现，用以解决Hadoop作业依赖问题。 从ETL工作到数据分析产品，都需要按顺序运行作业任务。</p>
 
-<p>Initially a single server solution, with the increased number of Hadoop users over the years, Azkaban has evolved to be a more robust solution.</p>
+<p>最初是单一服务器解决方案，随着多年来Hadoop用户数量的增加，Azkaban已经发展成为更鲁棒的解决方案。</p>
 
-<p>Azkaban consists of 3 key components:</p>
+<p>Azkaban由三个关键组成部分组成：</p>
 
 <ul>
-  <li>Relational Database (MySQL)</li>
+  <li>关系数据库（MySQL）</li>
   <li>AzkabanWebServer</li>
   <li>AzkabanExecutorServer</li>
 </ul>
 
 <img title="Azkaban Overview" src="./images/azkaban2overviewdesign.png" alt="Azkaban Overview" width="500" />
 
-<h3>Relational Database (MySQL)</h3>
+<h3>关系数据库（MySQL）</h3>
 
-<p>Azkaban uses MySQL to store much of its state. Both the AzkabanWebServer and the AzkabanExecutorServer access the DB.</p>
+<p>Azkaban使用MySQL存储它的大部分状态，AzkabanWebServer和AzkabanExecutorServer都会访问数据库。</p>
 
-<h4>How does AzkabanWebServer use the DB?</h4>
+<h4>AzkabanWebServer如何使用数据库？</h4>
 
-<p>The web server uses the db for the following reasons:</p>
-
-<ul>
-  <li><strong>Project Management</strong> - The projects, the permissions on the projects as well as the uploaded files.</li>
-  <li><strong>Executing Flow State</strong> - Keep track of executing flows and which Executor is running them.</li>
-  <li><strong>Previous Flow/Jobs</strong> - Search through previous executions of jobs and flows as well as access their log files.</li>
-  <li><strong>Scheduler</strong> - Keeps the state of the scheduled jobs.</li>
-  <li><strong>SLA</strong> - Keeps all the sla rules</li>
-</ul>
-
-<h4>How does the AzkabanExecutorServer use the DB?</h4>
-
-<p>The executor server uses the db for the following reasons:</p>
+<p>Web服务器使用数据库的原因如下：</p>
 
 <ul>
-  <li><strong>Access the project</strong> - Retrieves project files from the db.</li>
-  <li><strong>Executing Flows/Jobs</strong> - Retrieves and updates data for flows and that are executing</li>
-  <li><strong>Logs</strong> - Stores the output logs for jobs and flows into the db.</li>
-  <li><strong>Interflow dependency</strong> - If a flow is running on a different executor, it will take state from the DB.</li>
+  <li><strong>项目管理</strong> - 项目管理，项目权限控制，上传的文件等。</li>
+  <li><strong>执行流程状态</strong> - 跟踪执行流程，跟踪执行流程的执行者。</li>
+  <li><strong>上一个流程/作业</strong> - 搜索以前执行的作业和流程，以及访问其日志文件。</li>
+  <li><strong>调度程序</strong> - 保存预定作业的状态</li>
+  <li><strong>SLA</strong> - 保存所有的SLA规则</li>
 </ul>
 
-<p>There is no reason why MySQL was chosen except that it is a widely used DB. We are looking to implement compatibility with other DB's, although the search requirement on historically running jobs benefits from a relational data store.</p>
+<h4>AzkabanExecutorServer如何使用数据库？</h4>
+
+<p>执行者服务器使用数据库的原因如下：</p>
+
+<ul>
+  <li><strong>访问项目</strong> - 从数据库中检索项目文件。</li>
+  <li><strong>执行流程/作业</strong> - 检索并更新正在执行的流程的数据。</li>
+  <li><strong>日志</strong> - 将作业和流程的输出日志存储到数据库中。</li>
+  <li><strong>互流依赖性</strong> - 如果流在另一个执行器上运行，它可从数据库中获取状态。</li>
+</ul>
+
+<p>没有理由不选择MySQL，它是一个广泛使用的数据库。我们也正在实现与其他数据库的兼容性，尽管对历史运行作业的搜索要求从关系数据存储更方便。</p>
 
 <h3>AzkabanWebServer</h3>
 
-<p>The AzkabanWebServer is the main manager to all of Azkaban. It handles project management, authentication, scheduler, and monitoring of executions. It also serves as the web user interface.</p>
+<p>AzkabanWebServer是所有Azkaban的主要管理者。它处理项目管理，认证，调度程序和执行监控。 它也可以作为网络用户界面。</p>
 
-<p>Using Azkaban is easy. Azkaban uses <code>*.job</code> key-value property files to define individual tasks in a work flow, and the _dependencies_ property to define the dependency chain of the jobs. These job files and associated code can be archived into a <code>*.zip</code> and uploaded through the web server through the Azkaban UI or through curl.</p>
+<p>使用Azkaban很容易。Azkaban使用<code>*.job</code>键值属性文件来定义工作流程中的各个任务，并使用_dependencies_属性来定义作业的依赖关系链。这些作业文件和相关代码可以存档到<code>*.zip</code>并通过网络服务器通过Azkaban UI或curl上传。</p>
 
 <h3>AzkabanExecutorServer</h3>
 
-<p>Previous versions of Azkaban had both the AzkabanWebServer and the AzkabanExecutorServer features in a single server. The Executor has since been separated into its own server. There were several reasons for splitting these services: we will soon be able to scale the number of executions and fall back on operating Executors if one fails. Also, we are able to roll our upgrades of Azkaban with minimal impact on the users. As Azkaban's usage grew, we found that upgrading Azkaban became increasingly more difficult as all times of the day became 'peak'.<?p>
+<p>先前版本的Azkaban在单个服务器中同时具有AzkabanWebServer和AzkabanExecutorServer功能。目前，执行者已经被分离到它自己的服务器中。分离这些服务有几个原因：我们很快就可以扩展执行次数，并在执行失败时重新运行Executors。此外，我们能够对Azkaban进行升级，而对用户的影响最小。随着Azkaban的使用增长，我们发现升级Azkaban变得越来越困难，因为一天中的所有时间都变成“高峰”。</p>
 
