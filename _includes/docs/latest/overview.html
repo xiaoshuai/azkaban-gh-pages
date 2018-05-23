@@ -2,7 +2,7 @@
   <h1 id="overview">概述</h1>
 </div>
 
-<p>Azkaban由LinkedIn开发实现，用以解决Hadoop作业依赖问题。 从ETL工作到数据分析产品，都需要按顺序运行作业任务。</p>
+<p>Azkaban由LinkedIn开发实现，用以解决Hadoop作业依赖问题。 从ETL工作到数据分析产品，都需要按顺序运行作业作业。</p>
 
 <p>最初是单一服务器解决方案，随着多年来Hadoop用户数量的增加，Azkaban已经发展成为更鲁棒的解决方案。</p>
 
@@ -49,7 +49,7 @@
 
 <p>AzkabanWebServer是所有Azkaban的主要管理者。它处理项目管理，认证，调度程序和执行监控。 它也可以作为网络用户界面。</p>
 
-<p>使用Azkaban很容易。Azkaban使用<code>*.job</code>键值属性文件来定义工作流程中的各个任务，并使用_dependencies_属性来定义作业的依赖关系链。这些作业文件和相关代码可以存档到<code>*.zip</code>并通过网络服务器通过Azkaban UI或curl上传。</p>
+<p>使用Azkaban很容易。Azkaban使用<code>*.job</code>键值属性文件来定义工作流程中的各个作业，并使用_dependencies_属性来定义作业的依赖关系链。这些作业文件和相关代码可以存档到<code>*.zip</code>并通过网络服务器通过Azkaban UI或curl上传。</p>
 
 <h3>AzkabanExecutorServer</h3>
 

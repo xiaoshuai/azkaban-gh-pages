@@ -1,34 +1,34 @@
-<h2 id="database-setup">Database Setup</h2>
+<h2 id="database-setup">数据库设置</h2>
 
-<p class="lead">Currently, Azkaban2 only uses MySQL as its data store, although we are evaluating other possible storage systems.</p>
+<p class="lead">目前，Azkaban2仅使用MySQL作为其数据存储，尽管我们正在评估其他可能的存储系统。</p>
 
-<h3>1. Install MySQL</h3>
-<p>Installation of MySQL DB won't be covered by these instructions, but you can access the instructions on <a href="http://dev.mysql.com/doc/index.html" target="_blank">MySQL Documentation Site</a>.</p>
+<h3>1. 安装MySQL</h3>
+<p>这些说明不包含MySQL DB的安装，但您可以访问<a href="http://dev.mysql.com/doc/index.html" target="_blank">MySQL文档站点</a>上的说明。</p>
 
-<h3>2. Setup the Database</h3>
-<p><a href="http://dev.mysql.com/doc/refman/5.7/en/create-database.html" target="_blank">Create a database</a> for Azkaban. For example:</p>
+<h3>2. 设置数据库</h3>
+<p>为Azkaban<a href="http://dev.mysql.com/doc/refman/5.7/en/create-database.html" target="_blank">创建一个数据库</a>。例如：</p>
 
 <pre class="code">
 # Example database creation command, although the db name doesn't need to be 'azkaban'
 mysql&gt; CREATE DATABASE azkaban;
 </pre>
 
-<p><a href="http://dev.mysql.com/doc/refman/5.7/en/create-user.html" target="_blank">Create a database user</a> for Azkaban. For example:</p>
+<p>为Azkaban<a href="http://dev.mysql.com/doc/refman/5.7/en/create-user.html" target="_blank">创建一个数据库用户</a>。例如：</p>
 
 <pre class="code">
 # Example database creation command. The user name doesn't need to be 'azkaban'
 mysql&gt; CREATE USER 'username'@'%' IDENTIFIED BY 'password';
 </pre>
 
-<p><a href="http://dev.mysql.com/doc/refman/5.7/en/grant.html" target="_blank">Set user permissions</a> on the database. Create a user for Azkaban if one hasn't been made, and give the user <code>INSERT</code>, <code>SELECT</code>, <code>UPDATE</code>, <code>DELETE</code> permission on all tables in the Azkaban db.</p>
+<p>设置数据库的<a href="http://dev.mysql.com/doc/refman/5.7/en/grant.html" target="_blank">用户权限</a>。 为Azkaban创建一个用户（如果尚未创建），并为Azkaban数据库中的所有表赋予用户<code>INSERT</code>，<code>SELECT</code>，<code>UPDATE</code>，<code>DELETE</code>权限。</p>
 
 <pre class="code">
 # Replace db, username with the ones created by the previous steps.
 mysql&gt; GRANT SELECT,INSERT,UPDATE,DELETE ON &lt;database&gt;.* to '&lt;username&gt;'@'%' WITH GRANT OPTION;
 </pre>
 
-<p>Configure Packet Size may need to be configured. MySQL may have, by default, a ridiculously low allowable packet size. To increase it, you'll need to have the property <code>max_allowed_packet</code> set to something higher, say 1024M.</p>
-<p>To configure this in linux, open <code>/etc/my.cnf</code>. Somewhere after <code>mysqld</code>, add the following:</p>
+<p>配置数据包大小可能需要配置。默认情况下，MySQL可能有一个可接受的低数据包大小。为了增加它，你需要将属性<code>max_allowed_packet</code>设置为更高的值，比如1024M。</p>
+<p>要在linux中配置它，请打开<code>/etc/my.cnf</code> 。在<code>mysqld</code>之后的某处，添加以下内容：</p>
 
 <pre class="code">
 [mysqld]
@@ -36,16 +36,16 @@ mysql&gt; GRANT SELECT,INSERT,UPDATE,DELETE ON &lt;database&gt;.* to '&lt;userna
 max_allowed_packet=1024M
 </pre>
 
-To restart MySQL, you can run...
+要重新启动MySQL，您可以运行...
 
 <pre class="code">
 $ sudo /sbin/service mysqld restart
 </pre>
 
-<h3>3. Creating the Azkaban Tables</h3>
-<p>Download the azkaban-sql-script tarball from the <a href='{{ site.home }}/downloads.html'>download page</a>. Contained in this archive are table creation scripts.</p>
-<p>Run individual table creation scripts on the MySQL instance to create your tables. Alternatively, simply run the <code>create-all-sql</code> script. Any script with <code>update</code> as a prefix can be ignored.</p>
+<h3>3. 创建Azkaban表</h3>
+<p>从<a href='{{ site.home }}/downloads.html'>下载页面</a>下载azkaban-sql-script tarball。表创建脚本包含在此存档中。</p>
+<p>在MySQL实例上运行单个表创建脚本来创建表。或者，只需运行<code>create-all-sql</code>脚本。以<code>update</code>为前缀的任何脚本都可以忽略。</p>
 
-<h3>4. Get the JDBC Connector Jar</h3>
-<p>For various reasons, Azkaban does not distribute the MySQL JDBC connector jar. You can download the jar from <a href="http://www.mysql.com/downloads/connector/j/" target="_blank">this link</a>. </p>
-<p>This jar will be needed for both the web server and the executor server and should be dropped into the /extlib directory for both servers.</p>
+<h3>4. 获取JDBC连接器Jar包</h3>
+<p>出于各种原因，Azkaban不会分发MySQL JDBC连接器jar。你可以从<a href="http://www.mysql.com/downloads/connector/j/" target="_blank">这个链接</a>下载jar包。</p>
+<p>Web服务器和执行程序服务器都需要此jar，并应将其放入两个服务器的/extlib目录中。</p>
