@@ -1,7 +1,7 @@
 
-<h2 id="upload-projects">Upload Projects</h2>
+<h2 id="upload-projects">上传项目</h2>
 
-<p>Click on the <strong>Upload</strong> button. You will see the following dialog.</p>
+<p>点击<strong>Upload</strong>按钮。你会看到下面的对话框。</p>
 
 <div class="row">
   <div class="col-md-6 col-md-offset-3">
@@ -11,10 +11,10 @@
   </div>
 </div>
 
-<p>Select the archive file of your workflow files that you want to upload. Currently Azkaban only supports <code>*.zip</code> files. The zip should contain the <code>*.job</code> files and any files needed to run your jobs. Job names must be unique in a project. </p>
+<p>选择您想要上传的工作流文件的存档文件。目前Azkaban只支持<code>*.zip</code>文件。该zip文件应该包含<code>*.job</code>文件以及运行作业所需的任何文件。作业名称在项目中必须是唯一的。</p>
 
-<P>Azkaban will validate the contents of the zip to make sure that dependencies are met and that there's no cyclical dependencies detected.  If it finds any invalid flows, the upload will fail.</p>
+<P>Azkaban将验证压缩文件的内容以确保符合依赖性，并且没有检测到循环依赖。如果发现任何无效流程，上传将失败。</p>
 
-<p>Uploads overwrite all files in the project. Any changes made to jobs will be wiped out after a new zip file is uploaded.</p>
+<p>上传会覆盖项目中的所有文件。上传新的zip文件后，对作业所做的任何更改都将被清除。</p>
 
-<P>After a successful upload, you should see all of your flows listed on the screen.</p>
+<P>成功上传后，您应该可以看到屏幕上列出的所有流程。</p>

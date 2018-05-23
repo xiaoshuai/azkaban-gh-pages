@@ -1,8 +1,8 @@
-<h2 id="project-permissions">Project Permissions</h2>
+<h2 id="project-permissions">项目权限</h2>
 
-<p>When a project is created, the creator is automatically given an ADMIN status on the project. This allows the creator to view, upload, change jobs, run flows, delete and add user permissions to the project. An admin can remove other admins, but cannot remove themselves. This prevents projects from being admin-less except when admins are deleted by a user with an admin role.</p>
+<p>创建项目时，创建者将自动获得项目的ADMIN权限状态。这允许创建者查看，上传，更改作业，运行流程，删除和向项目添加用户权限。管理员可以删除其他管理员，但不能删除自己。这样可以防止当管理员全被具有管理员角色的用户删除后，项目不受管理。</p>
 
-<p>The permission page is accessible from the project page. On the permissions page, admins can add other users, groups or proxy users to the project.</p>
+<p>权限页面可从项目页面访问。在权限页面上，管理员可以将其他用户，组或代理用户添加到项目中。</p>
 
 <div class="row">
   <div class="col-md-6 col-md-offset-3">
@@ -13,42 +13,42 @@
 </div>
 
 <ul>
-	<li>Adding user permissions gives those users those specified permissions on the project. Remove user permissions by unchecking all of the permissions.</li>
-	<li>Group permissions allow everyone in a particular group the specified permissions. Remove group permissions by unchecking all the group permissions.</li>
-	<li>If proxy users are turned on, proxy users allows the project workflows to run as those users. This is useful for locking down which headless accounts jobs can proxy to. They are removed by clicking on the 'Remove' button once added.</li>
+	<li>添加用户权限为这些用户提供了项目的指定权限。通过取消选中所有权限来删除用户权限。</li>
+	<li>组权限允许特定组中的每个人都拥有指定的权限。通过取消选中所有组权限来删除组权限。</li>
+	<li>如果启用代理用户，代理用户允许项目工作流程以这些用户身份运行。这对于锁定哪些无头帐号作业可以代理来说很有用。一旦添加，点击“删除”按钮即可删除它们。</li>
 </ul>
 
-<p>Every user is validated through the UserManager to prevent invalid users from being added. Groups and Proxy users are also check to make sure they are valid and to see if the admin is allowed to add them to the project.</p>
+<p>每个用户都通过UserManager进行验证，以防止添加无效用户。组和代理用户也进行检查以确保它们是有效的，并查看是否允许管理员将它们添加到项目中</p>
 
-<p>The following permissions can be set for users and groups:</p>
+<p>可以为用户和组设置以下权限：</p>
 
 <table class="table table-striped table-condensed table-bordered">
 	<thead>
 		<tr>
-			<th>Permission</th>
-			<th>Description</th>
+			<th>权限</th>
+			<th>描述</th>
 		</tr>
 	</thead>
 	<tbody>
 		<tr>
 			<td>ADMIN</td>
-			<td>Allows the user to do anything with this project, as well as add permissions and delete the project</td>
+			<td>允许用户对此项目执行任何操作，并添加权限并删除项目</td>
 		</tr>
 		<tr>
 			<td>READ</td>
-			<td>The user can view the job, the flows, the execution logs.</td>
+			<td>用户可以查看作业，流程和执行日志。</td>
 		</tr>
 		<tr>
 			<td>WRITE</td>
-			<td>Project files can be uploaded, and the job files can be modified.</td>
+			<td>项目文件可以上传，作业文件可以修改。</td>
 		</tr>
 		<tr>
 			<td>EXECUTE</td>
-			<td>The user is allowed to execute, pause, cancel jobs.</td>
+			<td>用户被允许执行，暂停，取消作业。</td>
 		</tr>
 		<tr>
 			<td>SCHEDULE</td>
-			<td>The user is allowed to add, modify and remove a flow from the schedule.</td>
-		</tr.
+			<td>用户可以添加，修改和删除日程表中的流程。</td>
+		</tr>
 	</tbody>
 </table>
